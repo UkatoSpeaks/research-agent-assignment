@@ -1,3 +1,4 @@
+import re
 import time
 from typing import Any
 
@@ -19,10 +20,9 @@ class ExecutorAgent:
             "calculator": CalculatorTool(),
         }
 
-    def execute_step(
-        self,
-        step: PlanStep,
-    ) -> ToolResult:
+    def execute_step(self, step: PlanStep) -> ToolResult:
+        """Execute a single plan step."""
+
         start_time = time.perf_counter()
 
         try:
@@ -47,6 +47,7 @@ class ExecutorAgent:
             return ToolResult(
                 tool_name=step.tool,
                 success=False,
+                output=None,
                 error=str(exc),
                 execution_time_ms=round(
                     execution_time,
@@ -54,22 +55,131 @@ class ExecutorAgent:
                 ),
             )
 
-    def _build_tool_input(self, step: PlanStep) -> Any:
-        """
-        Convert a plan step into the input expected by its tool.
+    def _build_tool_input(
+        self,
+        step: PlanStep,
+    ) -> Any:
+        """Build the input required by the selected tool."""
 
-        The planner currently produces natural-language step
-        descriptions, so the executor derives the tool input
-        from the step description.
-        """
+        if step.tool == "calculator":
+            return self._extract_calculation(
+                step.description
+            )
 
         if step.tool in {
             "web_search",
             "page_fetcher",
-            "calculator",
         }:
             return step.description
 
         raise ValueError(
             f"Cannot build input for tool: {step.tool}"
         )
+
+    def _extract_calculation(
+        self,
+        description: str,
+    ) -> str:
+        """
+        Convert simple natural-language arithmetic
+        into a calculator-compatible expression.
+        """
+
+        expression = description.strip().lower()
+
+        # -------------------------------------------------
+        # 1. Remove common natural-language prefixes
+        # -------------------------------------------------
+
+        prefixes = [
+            "calculate the result of",
+            "calculate result of",
+            "calculate",
+            "the result of",
+        ]
+
+        for prefix in prefixes:
+            expression = expression.replace(
+                prefix,
+                "",
+            )
+
+        # -------------------------------------------------
+        # 2. Convert natural-language operators
+        # -------------------------------------------------
+
+        replacements = {
+            "multiplied by": "*",
+            "multiply by": "*",
+            "times": "*",
+            "divided by": "/",
+            "divide by": "/",
+            "plus": "+",
+            "minus": "-",
+        }
+
+        for phrase, operator in replacements.items():
+            expression = expression.replace(
+                phrase,
+                operator,
+            )
+
+        # -------------------------------------------------
+        # 3. Remove common punctuation
+        # -------------------------------------------------
+
+        expression = expression.replace(
+            "?",
+            "",
+        )
+
+        expression = expression.replace(
+            "=",
+            "",
+        )
+
+        # Remove trailing sentence punctuation.
+        expression = re.sub(
+            r"[.,!?;:]+$",
+            "",
+            expression.strip(),
+        )
+
+        # -------------------------------------------------
+        # 4. Keep only valid calculator characters
+        # -------------------------------------------------
+
+        expression = re.sub(
+            r"[^0-9+\-*/().%\s]",
+            "",
+            expression,
+        )
+
+        # -------------------------------------------------
+        # 5. Normalize whitespace
+        # -------------------------------------------------
+
+        expression = " ".join(
+            expression.split()
+        )
+
+        if not expression:
+            raise ValueError(
+                "Could not extract a calculation from: "
+                f"{description}"
+            )
+
+        # -------------------------------------------------
+        # 6. Validate final expression
+        # -------------------------------------------------
+
+        if not re.fullmatch(
+            r"[\d\s+\-*/().%]+",
+            expression,
+        ):
+            raise ValueError(
+                f"Invalid calculator expression: "
+                f"{expression}"
+            )
+
+        return expression

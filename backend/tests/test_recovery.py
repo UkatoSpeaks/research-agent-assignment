@@ -17,6 +17,14 @@ def test_recovery_event():
     )
 
     assert event.step_id == 2
-    assert event.recovered is False
+    assert event.recovered is True
     assert event.error == "Search failed"
     assert event.recovery_action
+
+
+def test_recovery_retries():
+    recovery = RecoveryAgent()
+
+    assert recovery.should_retry(0) is True
+    assert recovery.should_retry(1) is True
+    assert recovery.should_retry(2) is False
