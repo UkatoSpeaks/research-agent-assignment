@@ -1,0 +1,88 @@
+──────────────────────────────── ResearchPilot ────────────────────────────────
+Goal: Calculate the total cost if 18 items cost 24.99 dollars each, then verify
+the calculation.
+Failure injection enabled: the first tool call will be forced to fail to 
+demonstrate recovery.
+────────────────────────────────── Planning ───────────────────────────────────
+┌───────────────────────────────── Reasoning ─────────────────────────────────┐
+│ The total cost is obtained by multiplying the unit price by the quantity.   │
+│ To verify, the calculation is repeated using an alternative representation  │
+│ (cents) and then converted back to dollars, ensuring consistency across     │
+│ methods.                                                                    │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                Execution Plan                                 
+┌───┬────────────┬─────────────────────────────┬──────────────────────────────┐
+│ # │ Tool       │ Description                 │ Expected Output              │
+├───┼────────────┼─────────────────────────────┼──────────────────────────────┤
+│ 1 │ calculator │ Multiply the unit price     │ Total cost = 449.82 dollars  │
+│   │            │ $24.99 by the quantity 18   │                              │
+│   │            │ to obtain the total cost in │                              │
+│   │            │ dollars.                    │                              │
+├───┼────────────┼─────────────────────────────┼──────────────────────────────┤
+│ 2 │ calculator │ Convert the unit price to   │ Total cost = 44982 cents     │
+│   │            │ cents (24.99 dollars = 2499 │                              │
+│   │            │ cents) and multiply by 18   │                              │
+│   │            │ to get the total cost in    │                              │
+│   │            │ cents.                      │                              │
+├───┼────────────┼─────────────────────────────┼──────────────────────────────┤
+│ 3 │ calculator │ Divide the total cents      │ Converted total = 449.82     │
+│   │            │ (44982) by 100 to convert   │ dollars, matching step 1     │
+│   │            │ back to dollars and confirm │                              │
+│   │            │ it matches the result from  │                              │
+│   │            │ step 1.                     │                              │
+└───┴────────────┴─────────────────────────────┴──────────────────────────────┘
+────────────────────────────────── Execution ──────────────────────────────────
+Step 1/3 (calculator) attempt #1 -> FAILED (0.0 ms)
+  Multiply the unit price $24.99 by the quantity 18 to obtain the total cost in
+dollars.
+┌───────────────────────────── Recovery - Step 1 ─────────────────────────────┐
+│ Error: Deliberate test failure for recovery demonstration.                  │
+│ Action: Validate the expression and retry with a corrected expression.      │
+│ Outcome: recovered                                                          │
+└─────────────────────────────────────────────────────────────────────────────┘
+Step 1/3 (calculator) attempt #2 -> SUCCESS (0.06 ms)
+  Multiply the unit price $24.99 by the quantity 18 to obtain the total cost in
+dollars.
+Step 2/3 (calculator) attempt #1 -> SUCCESS (0.03 ms)
+  Convert the unit price to cents (24.99 dollars = 2499 cents) and multiply by 
+18 to get the total cost in cents.
+Step 3/3 (calculator) attempt #1 -> SUCCESS (0.05 ms)
+  Divide the total cents (44982) by 100 to convert back to dollars and confirm 
+it matches the result from step 1.
+──────────────────────────────── Final Report ─────────────────────────────────
+┌─────────────────────────── ResearchPilot Report ────────────────────────────┐
+│ COMPLETED                                                                   │
+│                                                                             │
+│ The total cost for 18 items priced at $24.99 each is $449.82. This result   │
+│ was verified through an alternative calculation, confirming its accuracy.   │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                   Findings                                    
+┌─────────────────────────────┬─────────────────────────────────────┬─────────┐
+│ Title                       │ Summary                             │ Sources │
+├─────────────────────────────┼─────────────────────────────────────┼─────────┤
+│ Total cost calculation      │ Multiplying the unit price (24.99)  │ -       │
+│                             │ by the quantity (18) yields a total │         │
+│                             │ cost of 449.82 dollars.             │         │
+├─────────────────────────────┼─────────────────────────────────────┼─────────┤
+│ Verification of calculation │ An alternative computation (44982 / │ -       │
+│                             │ 100) also results in 449.82         │         │
+│                             │ dollars, confirming the original    │         │
+│                             │ multiplication result.              │         │
+└─────────────────────────────┴─────────────────────────────────────┴─────────┘
+      Execution Metrics      
+┌───────────────────┬───────┐
+│ Metric            │ Value │
+├───────────────────┼───────┤
+│ Total steps       │     3 │
+│ Completed steps   │     3 │
+│ Tool calls        │     4 │
+│ Failed tool calls │     1 │
+│ Recovery attempts │     1 │
+└───────────────────┴───────┘
+┌──────────────────────────────── Limitations ────────────────────────────────┐
+│ - No external sources or URLs were provided; calculations rely solely on    │
+│ the tool outputs.                                                           │
+│ - Verification used a derived expression rather than an independent source. │
+└─────────────────────────────────────────────────────────────────────────────┘
+JSON report written to docs\samples\02_recovery_report.json
+Markdown report written to docs\samples\02_recovery_report.md

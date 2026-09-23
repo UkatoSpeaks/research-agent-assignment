@@ -63,6 +63,12 @@ class PageFetcherTool:
                     "The page returned no readable text."
                 )
 
+            max_chars = settings.MAX_PAGE_TEXT_CHARS
+            truncated = len(text) > max_chars
+
+            if truncated:
+                text = text[:max_chars] + " [truncated]"
+
             execution_time = (
                 time.perf_counter() - start_time
             ) * 1000
@@ -75,6 +81,7 @@ class PageFetcherTool:
                     "status_code": response.status_code,
                     "content_type": content_type,
                     "text": text,
+                    "truncated": truncated,
                 },
                 execution_time_ms=round(
                     execution_time,

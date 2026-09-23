@@ -10,16 +10,25 @@ from app.schemas import (
 
 class AgentState(TypedDict, total=False):
     goal: str
+
     plan: ExecutionPlan
+
     current_step: int
+
     tool_results: list[ToolResult]
+
     errors: list[str]
+
     recovery_events: list[RecoveryEvent]
+
     retry_count: int
+
     execution_log: list[dict[str, Any]]
+
     final_report: FinalReport
+
     status: str
 
-    # Testing / failure injection
     force_failure: bool
+
     failure_injected: bool

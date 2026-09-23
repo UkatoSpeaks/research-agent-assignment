@@ -1,0 +1,142 @@
+──────────────────────────────── ResearchPilot ────────────────────────────────
+Goal: Research and summarize the top 3 developments in AI coding assistants 
+from the last week.
+────────────────────────────────── Planning ───────────────────────────────────
+┌───────────────────────────────── Reasoning ─────────────────────────────────┐
+│ The plan first discovers recent news articles about AI coding assistants    │
+│ using a web search limited to the past week. It then retrieves the full     │
+│ content of the three most relevant articles to extract the key details of   │
+│ each development. These extracted summaries provide the necessary raw       │
+│ material for a later reporting component to create the final summary.       │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                Execution Plan                                 
+┌───┬──────────────┬────────────────────────────┬─────────────────────────────┐
+│ # │ Tool         │ Description                │ Expected Output             │
+├───┼──────────────┼────────────────────────────┼─────────────────────────────┤
+│ 1 │ web_search   │ Search the web for news    │ A list of at least five     │
+│   │              │ articles and blog posts    │ recent URLs (with titles    │
+│   │              │ about AI coding assistants │ and brief snippets)         │
+│   │              │ published within the last  │ covering AI coding          │
+│   │              │ week.                      │ assistant developments.     │
+├───┼──────────────┼────────────────────────────┼─────────────────────────────┤
+│ 2 │ page_fetcher │ Fetch and extract the main │ A concise summary (who,     │
+│   │              │ development details from   │ what, when, and             │
+│   │              │ the first most relevant    │ significance) of the first  │
+│   │              │ URL identified in step 1.  │ AI coding assistant         │
+│   │              │                            │ development.                │
+├───┼──────────────┼────────────────────────────┼─────────────────────────────┤
+│ 3 │ page_fetcher │ Fetch and extract the main │ A concise summary (who,     │
+│   │              │ development details from   │ what, when, and             │
+│   │              │ the second most relevant   │ significance) of the second │
+│   │              │ URL identified in step 1.  │ AI coding assistant         │
+│   │              │                            │ development.                │
+├───┼──────────────┼────────────────────────────┼─────────────────────────────┤
+│ 4 │ page_fetcher │ Fetch and extract the main │ A concise summary (who,     │
+│   │              │ development details from   │ what, when, and             │
+│   │              │ the third most relevant    │ significance) of the third  │
+│   │              │ URL identified in step 1.  │ AI coding assistant         │
+│   │              │                            │ development.                │
+└───┴──────────────┴────────────────────────────┴─────────────────────────────┘
+────────────────────────────────── Execution ──────────────────────────────────
+Step 1/4 (web_search) attempt #1 -> SUCCESS (3736.31 ms)
+  Search the web for news articles and blog posts about AI coding assistants 
+published within the last week.
+Step 2/4 (page_fetcher) attempt #1 -> SUCCESS (1487.52 ms)
+  Fetch and extract the main development details from the first most relevant 
+URL identified in step 1.
+Step 3/4 (page_fetcher) attempt #1 -> SUCCESS (492.51 ms)
+  Fetch and extract the main development details from the second most relevant 
+URL identified in step 1.
+Step 4/4 (page_fetcher) attempt #1 -> SUCCESS (1832.29 ms)
+  Fetch and extract the main development details from the third most relevant 
+URL identified in step 1.
+──────────────────────────────── Final Report ─────────────────────────────────
+┌─────────────────────────── ResearchPilot Report ────────────────────────────┐
+│ COMPLETED                                                                   │
+│                                                                             │
+│ Three notable developments were identified: (1) Cursor's use of OpenAI's    │
+│ Codeex model to autonomously generate a full web browser in a week, (2) a   │
+│ continued rise in AI coding assistant adoption paired with decreasing trust │
+│ among developers, and (3) growing concerns about silent failures in AI      │
+│ coding tools as reported by IEEE Spectrum. Limitations stem from the lack   │
+│ of precise timestamps confirming these events occurred within the last week │
+│ and from truncated source content.                                          │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                   Findings                                    
+┌─────────────────────────┬─────────────────────────┬─────────────────────────┐
+│ Title                   │ Summary                 │ Sources                 │
+├─────────────────────────┼─────────────────────────┼─────────────────────────┤
+│ Cursor CEO uses         │ In a recent             │ https://www.youtube.co… │
+│ OpenAI's Codeex model   │ demonstration, the CEO  │                         │
+│ to generate a full web  │ of Cursor employed      │                         │
+│ browser in one week     │ OpenAI's Codeex model   │                         │
+│                         │ with a single prompt to │                         │
+│                         │ create an entire web    │                         │
+│                         │ browser. The autonomous │                         │
+│                         │ agent ran continuously  │                         │
+│                         │ for a week, producing   │                         │
+│                         │ approximately 3 million │                         │
+│                         │ lines of code and       │                         │
+│                         │ rendering basic web     │                         │
+│                         │ pages such as the       │                         │
+│                         │ Google homepage. This   │                         │
+│                         │ showcases the scale and │                         │
+│                         │ autonomy of modern AI   │                         │
+│                         │ coding agents.          │                         │
+├─────────────────────────┼─────────────────────────┼─────────────────────────┤
+│ AI coding assistants    │ A September 3 2026 blog │ https://uvik.net/blog/… │
+│ see rising adoption but │ post from Uvik reports  │                         │
+│ declining trust among   │ that AI coding          │                         │
+│ developers              │ assistants have moved   │                         │
+│                         │ from optional tools to  │                         │
+│                         │ routine infrastructure  │                         │
+│                         │ for many developers.    │                         │
+│                         │ Daily usage is now      │                         │
+│                         │ common, and overall     │                         │
+│                         │ adoption continues to   │                         │
+│                         │ increase in 2025‑2026.  │                         │
+│                         │ However, the same       │                         │
+│                         │ report notes a paradox: │                         │
+│                         │ while more developers   │                         │
+│                         │ use these tools, a      │                         │
+│                         │ smaller proportion      │                         │
+│                         │ trust the generated     │                         │
+│                         │ code to be accurate.    │                         │
+├─────────────────────────┼─────────────────────────┼─────────────────────────┤
+│ Emerging concerns about │ IEEE Spectrum published │ https://spectrum.ieee.… │
+│ silent failures in AI   │ an article titled "AI   │                         │
+│ coding assistants       │ Coding Degrades: Silent │                         │
+│                         │ Failures Emerge,"       │                         │
+│                         │ highlighting that AI    │                         │
+│                         │ coding assistants are   │                         │
+│                         │ beginning to exhibit    │                         │
+│                         │ subtle, hard‑to‑detect  │                         │
+│                         │ errors. The piece warns │                         │
+│                         │ that these silent       │                         │
+│                         │ failures could          │                         │
+│                         │ undermine developer     │                         │
+│                         │ confidence and suggests │                         │
+│                         │ the need for better     │                         │
+│                         │ validation mechanisms.  │                         │
+└─────────────────────────┴─────────────────────────┴─────────────────────────┘
+      Execution Metrics      
+┌───────────────────┬───────┐
+│ Metric            │ Value │
+├───────────────────┼───────┤
+│ Total steps       │     4 │
+│ Completed steps   │     4 │
+│ Tool calls        │     4 │
+│ Failed tool calls │     0 │
+│ Recovery attempts │     0 │
+└───────────────────┴───────┘
+┌──────────────────────────────── Limitations ────────────────────────────────┐
+│ - The YouTube video and IEEE Spectrum article do not provide explicit       │
+│ publication dates within the last week, so it is unclear if they represent  │
+│ developments that occurred in the target timeframe.                         │
+│ - The Uvik blog post is dated September 3 2026 and discusses broader trends │
+│ rather than a specific event from the last week.                            │
+│ - Content from the IEEE Spectrum article is heavily truncated, limiting     │
+│ detail about the nature of the reported silent failures.                    │
+└─────────────────────────────────────────────────────────────────────────────┘
+JSON report written to docs\samples\01_research_report.json
+Markdown report written to docs\samples\01_research_report.md

@@ -13,6 +13,10 @@ class Settings(BaseSettings):
     MAX_SEARCH_RESULTS: int = 5
     REQUEST_TIMEOUT: int = 15
 
+    # Caps extracted page text so a single fetched article cannot blow
+    # past the LLM's token-per-minute rate limit downstream.
+    MAX_PAGE_TEXT_CHARS: int = 4000
+
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",

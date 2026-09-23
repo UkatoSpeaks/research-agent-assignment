@@ -1,0 +1,221 @@
+──────────────────────────────── ResearchPilot ────────────────────────────────
+Goal: Produce a short competitive-landscape brief comparing Notion and Obsidian
+for note-taking, using public information.
+────────────────────────────────── Planning ───────────────────────────────────
+┌───────────────────────────────── Reasoning ─────────────────────────────────┐
+│ The plan first gathers recent third‑party comparison articles to capture    │
+│ feature, usability, and community perspectives, then obtains official       │
+│ pricing details from each product's website. Each step uses a single tool   │
+│ to locate or retrieve a specific source, ensuring the reporter later has    │
+│ all necessary factual inputs for a concise brief.                           │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                Execution Plan                                 
+┌───┬──────────────┬────────────────────────────┬─────────────────────────────┐
+│ # │ Tool         │ Description                │ Expected Output             │
+├───┼──────────────┼────────────────────────────┼─────────────────────────────┤
+│ 1 │ web_search   │ Search the web for recent  │ A list of URLs (at least    │
+│   │              │ articles that compare      │ two) from reputable tech or │
+│   │              │ Notion and Obsidian for    │ productivity sites that     │
+│   │              │ note‑taking.               │ contain side‑by‑side        │
+│   │              │                            │ comparisons.                │
+├───┼──────────────┼────────────────────────────┼─────────────────────────────┤
+│ 2 │ web_search   │ Search the web for the     │ URL of Notion's current     │
+│   │              │ official Notion pricing    │ pricing page.               │
+│   │              │ page.                      │                             │
+├───┼──────────────┼────────────────────────────┼─────────────────────────────┤
+│ 3 │ web_search   │ Search the web for the     │ URL of Obsidian's current   │
+│   │              │ official Obsidian pricing  │ pricing page.               │
+│   │              │ page.                      │                             │
+├───┼──────────────┼────────────────────────────┼─────────────────────────────┤
+│ 4 │ page_fetcher │ Fetch the first comparison │ A concise summary of the    │
+│   │              │ article URL identified in  │ article's key comparison    │
+│   │              │ step 1 and extract its     │ points.                     │
+│   │              │ main comparison points     │                             │
+│   │              │ (features, collaboration,  │                             │
+│   │              │ offline access,            │                             │
+│   │              │ extensibility, pricing     │                             │
+│   │              │ mentions).                 │                             │
+├───┼──────────────┼────────────────────────────┼─────────────────────────────┤
+│ 5 │ page_fetcher │ Fetch the second           │ A concise summary of the    │
+│   │              │ comparison article URL     │ article's key comparison    │
+│   │              │ identified in step 1 and   │ points.                     │
+│   │              │ extract its main           │                             │
+│   │              │ comparison points          │                             │
+│   │              │ (features, collaboration,  │                             │
+│   │              │ offline access,            │                             │
+│   │              │ extensibility, pricing     │                             │
+│   │              │ mentions).                 │                             │
+├───┼──────────────┼────────────────────────────┼─────────────────────────────┤
+│ 6 │ page_fetcher │ Fetch Notion's pricing     │ List of Notion plan tiers   │
+│   │              │ page (from step 2) and     │ with monthly/annual         │
+│   │              │ extract current plan names │ pricing.                    │
+│   │              │ and prices.                │                             │
+├───┼──────────────┼────────────────────────────┼─────────────────────────────┤
+│ 7 │ page_fetcher │ Fetch Obsidian's pricing   │ List of Obsidian plan tiers │
+│   │              │ page (from step 3) and     │ with monthly/annual         │
+│   │              │ extract current plan names │ pricing.                    │
+│   │              │ and prices.                │                             │
+└───┴──────────────┴────────────────────────────┴─────────────────────────────┘
+────────────────────────────────── Execution ──────────────────────────────────
+Step 1/7 (web_search) attempt #1 -> SUCCESS (3915.01 ms)
+  Search the web for recent articles that compare Notion and Obsidian for 
+note‑taking.
+Step 2/7 (web_search) attempt #1 -> SUCCESS (2032.02 ms)
+  Search the web for the official Notion pricing page.
+Step 3/7 (web_search) attempt #1 -> SUCCESS (3142.18 ms)
+  Search the web for the official Obsidian pricing page.
+Step 4/7 (page_fetcher) attempt #1 -> SUCCESS (2736.81 ms)
+  Fetch the first comparison article URL identified in step 1 and extract its 
+main comparison points (features, collaboration, offline access, extensibility,
+pricing mentions).
+Step 5/7 (page_fetcher) attempt #1 -> SUCCESS (1661.48 ms)
+  Fetch the second comparison article URL identified in step 1 and extract its 
+main comparison points (features, collaboration, offline access, extensibility,
+pricing mentions).
+Step 6/7 (page_fetcher) attempt #1 -> SUCCESS (1195.06 ms)
+  Fetch Notion's pricing page (from step 2) and extract current plan names and 
+prices.
+Step 7/7 (page_fetcher) attempt #1 -> SUCCESS (1228.63 ms)
+  Fetch Obsidian's pricing page (from step 3) and extract current plan names 
+and prices.
+──────────────────────────────── Final Report ─────────────────────────────────
+┌─────────────────────────── ResearchPilot Report ────────────────────────────┐
+│ COMPLETED                                                                   │
+│                                                                             │
+│ Notion and Obsidian address different note‑taking needs in 2026. Notion     │
+│ excels in cloud‑based collaboration, structured databases, and enterprise   │
+│ adoption, with a clear paid pricing model. Obsidian shines for individual   │
+│ users who value local‑first storage, Markdown simplicity, speed, and a rich │
+│ plugin ecosystem, offering a free core and optional paid add‑ons. Market    │
+│ data shows Notion dominates the broader business market, while Obsidian     │
+│ enjoys strong developer and privacy‑focused adoption. Pricing, performance, │
+│ and feature focus make each tool better suited to distinct workflows.       │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                   Findings                                    
+┌─────────────────────────┬─────────────────────────┬─────────────────────────┐
+│ Title                   │ Summary                 │ Sources                 │
+├─────────────────────────┼─────────────────────────┼─────────────────────────┤
+│ Core Architecture &     │ Notion is a             │ https://tech-insider.o… │
+│ Data Model              │ cloud‑first, all‑in‑one │                         │
+│                         │ workspace that stores   │                         │
+│                         │ content as blocks in a  │                         │
+│                         │ proprietary format and  │                         │
+│                         │ emphasizes real‑time    │                         │
+│                         │ collaboration and       │                         │
+│                         │ structured databases.   │                         │
+│                         │ Obsidian is a           │                         │
+│                         │ local‑first,            │                         │
+│                         │ Markdown‑based          │                         │
+│                         │ knowledge‑management    │                         │
+│                         │ tool that stores notes  │                         │
+│                         │ as plain‑text files on  │                         │
+│                         │ the user’s device,      │                         │
+│                         │ prioritising speed,     │                         │
+│                         │ privacy and             │                         │
+│                         │ extensibility via       │                         │
+│                         │ plugins.                │                         │
+├─────────────────────────┼─────────────────────────┼─────────────────────────┤
+│ Collaboration & Team    │ Notion offers built‑in  │ https://tech-insider.o… │
+│ Features                │ real‑time               │                         │
+│                         │ collaboration, shared   │                         │
+│                         │ workspaces, and         │                         │
+│                         │ extensive integration   │                         │
+│                         │ with tools like Slack   │                         │
+│                         │ and Google Drive,       │                         │
+│                         │ making it popular with  │                         │
+│                         │ teams (estimated 70 %   │                         │
+│                         │ of Fortune 500 teams).  │                         │
+│                         │ Obsidian’s              │                         │
+│                         │ collaboration is        │                         │
+│                         │ limited to optional     │                         │
+│                         │ paid Sync and Publish   │                         │
+│                         │ services; its core app  │                         │
+│                         │ is designed for         │                         │
+│                         │ individual use, with    │                         │
+│                         │ community‑driven        │                         │
+│                         │ plugins adding limited  │                         │
+│                         │ team functionality.     │                         │
+├─────────────────────────┼─────────────────────────┼─────────────────────────┤
+│ Performance & Offline   │ Mobile startup speed    │ https://tech-insider.o… │
+│ Capability              │ tests show Obsidian     │                         │
+│                         │ loads faster than       │                         │
+│                         │ Notion (iOS: 1.1 s vs   │                         │
+│                         │ 2.3 s; Android: 1.4 s   │                         │
+│                         │ vs 3.8 s). Notion is    │                         │
+│                         │ adding offline          │                         │
+│                         │ features, but Obsidian  │                         │
+│                         │ remains fully           │                         │
+│                         │ functional offline by   │                         │
+│                         │ default because notes   │                         │
+│                         │ reside locally.         │                         │
+├─────────────────────────┼─────────────────────────┼─────────────────────────┤
+│ Pricing Comparison      │ Notion’s paid plans     │ https://thedigitalproj… │
+│ (2026)                  │ start at $10 per user   │ https://checkthat.ai/b… │
+│                         │ per month (annual       │                         │
+│                         │ billing) with a free    │                         │
+│                         │ tier for individuals;   │                         │
+│                         │ AI add‑on costs $8 per  │                         │
+│                         │ member per month.       │                         │
+│                         │ Obsidian’s core app is  │                         │
+│                         │ free; optional Sync     │                         │
+│                         │ costs $4–$8 per user    │                         │
+│                         │ per month (annual       │                         │
+│                         │ discount), Publish      │                         │
+│                         │ $8–$10 per site per     │                         │
+│                         │ month, Catalyst $25     │                         │
+│                         │ one‑time, and a         │                         │
+│                         │ voluntary commercial    │                         │
+│                         │ license $50 per user    │                         │
+│                         │ per year. For a team of │                         │
+│                         │ 10, Notion would cost   │                         │
+│                         │ roughly $100 per month  │                         │
+│                         │ (plus AI if used),      │                         │
+│                         │ whereas Obsidian’s      │                         │
+│                         │ baseline cost could be  │                         │
+│                         │ $0 if Sync is not       │                         │
+│                         │ required, or $40–$80    │                         │
+│                         │ per month with Sync.    │                         │
+├─────────────────────────┼─────────────────────────┼─────────────────────────┤
+│ Market Position &       │ Notion holds about 25 % │ https://tech-insider.o… │
+│ Adoption (2026)         │ of the note‑taking      │                         │
+│                         │ software market and     │                         │
+│                         │ powers over 70 % of     │                         │
+│                         │ Fortune 500 teams.      │                         │
+│                         │ Obsidian’s active user  │                         │
+│                         │ base grew 22 % YoY to   │                         │
+│                         │ roughly 1.5 million     │                         │
+│                         │ users, with 31 % of     │                         │
+│                         │ developers in the 2026  │                         │
+│                         │ Stack Overflow survey   │                         │
+│                         │ preferring Obsidian     │                         │
+│                         │ over Notion’s 24 %.     │                         │
+│                         │ Both tools are          │                         │
+│                         │ converging (Notion      │                         │
+│                         │ improving offline,      │                         │
+│                         │ Obsidian adding         │                         │
+│                         │ collaboration), but     │                         │
+│                         │ they still serve        │                         │
+│                         │ distinct primary use    │                         │
+│                         │ cases.                  │                         │
+└─────────────────────────┴─────────────────────────┴─────────────────────────┘
+      Execution Metrics      
+┌───────────────────┬───────┐
+│ Metric            │ Value │
+├───────────────────┼───────┤
+│ Total steps       │     7 │
+│ Completed steps   │     7 │
+│ Tool calls        │     7 │
+│ Failed tool calls │     0 │
+│ Recovery attempts │     0 │
+└───────────────────┴───────┘
+┌──────────────────────────────── Limitations ────────────────────────────────┐
+│ - All data are drawn from a limited set of publicly available articles and  │
+│ pricing summaries; detailed feature matrices, enterprise‑grade pricing, or  │
+│ post‑2026 updates are not captured.                                         │
+│ - Performance numbers are based on a single article’s benchmark and may not │
+│ reflect all device configurations.                                          │
+│ - User‑base and market‑share figures are estimates reported by the sources  │
+│ and may differ from official company reports.                               │
+└─────────────────────────────────────────────────────────────────────────────┘
+JSON report written to docs\samples\03_competitive_brief_report.json
+Markdown report written to docs\samples\03_competitive_brief_report.md

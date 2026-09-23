@@ -30,7 +30,7 @@ class PlanStep(BaseModel):
 
     expected_output: str = Field(
         ...,
-        min_length=5,
+        min_length=1,
         description="Expected result from this step.",
     )
 

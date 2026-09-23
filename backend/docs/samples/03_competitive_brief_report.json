@@ -1,0 +1,61 @@
+{
+  "goal": "Produce a short competitive\u2011landscape brief comparing Notion and Obsidian for note\u2011taking, using public information.",
+  "status": "completed",
+  "summary": "Notion and Obsidian address different note\u2011taking needs in 2026. Notion excels in cloud\u2011based collaboration, structured databases, and enterprise adoption, with a clear paid pricing model. Obsidian shines for individual users who value local\u2011first storage, Markdown simplicity, speed, and a rich plugin ecosystem, offering a free core and optional paid add\u2011ons. Market data shows Notion dominates the broader business market, while Obsidian enjoys strong developer and privacy\u2011focused adoption. Pricing, performance, and feature focus make each tool better suited to distinct workflows.",
+  "findings": [
+    {
+      "title": "Core Architecture & Data Model",
+      "summary": "Notion is a cloud\u2011first, all\u2011in\u2011one workspace that stores content as blocks in a proprietary format and emphasizes real\u2011time collaboration and structured databases. Obsidian is a local\u2011first, Markdown\u2011based knowledge\u2011management tool that stores notes as plain\u2011text files on the user\u2019s device, prioritising speed, privacy and extensibility via plugins.",
+      "source_urls": [
+        "https://tech-insider.org/notion-vs-obsidian-2026"
+      ]
+    },
+    {
+      "title": "Collaboration & Team Features",
+      "summary": "Notion offers built\u2011in real\u2011time collaboration, shared workspaces, and extensive integration with tools like Slack and Google Drive, making it popular with teams (estimated 70\u202f% of Fortune\u202f500 teams). Obsidian\u2019s collaboration is limited to optional paid Sync and Publish services; its core app is designed for individual use, with community\u2011driven plugins adding limited team functionality.",
+      "source_urls": [
+        "https://tech-insider.org/notion-vs-obsidian-2026"
+      ]
+    },
+    {
+      "title": "Performance & Offline Capability",
+      "summary": "Mobile startup speed tests show Obsidian loads faster than Notion (iOS: 1.1\u202fs vs 2.3\u202fs; Android: 1.4\u202fs vs 3.8\u202fs). Notion is adding offline features, but Obsidian remains fully functional offline by default because notes reside locally.",
+      "source_urls": [
+        "https://tech-insider.org/notion-vs-obsidian-2026"
+      ]
+    },
+    {
+      "title": "Pricing Comparison (2026)",
+      "summary": "Notion\u2019s paid plans start at $10\u202fper user per month (annual billing) with a free tier for individuals; AI add\u2011on costs $8\u202fper member per month. Obsidian\u2019s core app is free; optional Sync costs $4\u2013$8\u202fper user per month (annual discount), Publish $8\u2013$10\u202fper site per month, Catalyst $25 one\u2011time, and a voluntary commercial license $50\u202fper user per year. For a team of 10, Notion would cost roughly $100\u202fper month (plus AI if used), whereas Obsidian\u2019s baseline cost could be $0\u202fif Sync is not required, or $40\u2013$80\u202fper month with Sync.",
+      "source_urls": [
+        "https://thedigitalprojectmanager.com/tools/notion-pricing",
+        "https://checkthat.ai/brands/obsidian/pricing"
+      ]
+    },
+    {
+      "title": "Market Position & Adoption (2026)",
+      "summary": "Notion holds about 25\u202f% of the note\u2011taking software market and powers over 70\u202f% of Fortune\u202f500 teams. Obsidian\u2019s active user base grew 22\u202f% YoY to roughly 1.5\u202fmillion users, with 31\u202f% of developers in the 2026 Stack Overflow survey preferring Obsidian over Notion\u2019s 24\u202f%. Both tools are converging (Notion improving offline, Obsidian adding collaboration), but they still serve distinct primary use cases.",
+      "source_urls": [
+        "https://tech-insider.org/notion-vs-obsidian-2026"
+      ]
+    }
+  ],
+  "sources": [
+    "https://tech-insider.org/notion-vs-obsidian-2026",
+    "https://thedigitalprojectmanager.com/tools/notion-pricing",
+    "https://checkthat.ai/brands/obsidian/pricing"
+  ],
+  "recovery_events": [],
+  "metrics": {
+    "total_steps": 7,
+    "completed_steps": 7,
+    "tool_calls": 7,
+    "failed_tool_calls": 0,
+    "recovery_attempts": 0
+  },
+  "limitations": [
+    "All data are drawn from a limited set of publicly available articles and pricing summaries; detailed feature matrices, enterprise\u2011grade pricing, or post\u20112026 updates are not captured.",
+    "Performance numbers are based on a single article\u2019s benchmark and may not reflect all device configurations.",
+    "User\u2011base and market\u2011share figures are estimates reported by the sources and may differ from official company reports."
+  ]
+}
