@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ResearchPilot — Monitoring Report</title>
+<style>
+  :root {
+    --blue: #2b6cb0; --green: #2f855a; --red: #c0392b;
+    --purple: #805ad5; --teal: #2c7a7b; --ink: #1a202c;
+    --muted: #718096; --border: #e2e8f0; --bg-soft: #f7fafc;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    max-width: 960px; margin: 0 auto; padding: 32px 20px 64px;
+    color: var(--ink); background: #ffffff; line-height: 1.5;
+  }
+  h1 { font-size: 24px; margin-bottom: 4px; }
+  .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
+  h2 { font-size: 17px; margin-top: 40px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 18px 0 8px; }
+  .kpi { border: 1px solid var(--border); border-radius: 10px; padding: 14px; background: var(--bg-soft); }
+  .kpi .value { font-size: 26px; font-weight: 700; }
+  .kpi .label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .kpi.blue .value { color: var(--blue); }
+  .kpi.green .value { color: var(--green); }
+  .kpi.red .value { color: var(--red); }
+  .kpi.teal .value { color: var(--teal); }
+  table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .03em; }
+  tr:last-child td { border-bottom: none; }
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+  .pill.ok { background: #e6fffa; color: var(--green); }
+  .pill.warn { background: #fff5f5; color: var(--red); }
+  .bar-row { display: flex; align-items: center; gap: 10px; margin: 8px 0; }
+  .bar-label { width: 130px; font-size: 13px; flex-shrink: 0; }
+  .bar-track { flex: 1; background: var(--bg-soft); border-radius: 6px; height: 18px; overflow: hidden; border: 1px solid var(--border); }
+  .bar-fill { height: 100%; border-radius: 6px 0 0 6px; }
+  .bar-value { width: 90px; text-align: right; font-size: 12px; color: var(--muted); flex-shrink: 0; }
+  .note { font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .footer { margin-top: 48px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 14px; }
+  code { background: var(--bg-soft); padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<h1>ResearchPilot — Monitoring Report</h1>
+<div class="subtitle">Aggregated from 3 real CLI runs (<code>docs/samples/</code>) and the automated pytest suite. No metrics on this page are simulated — every number is read directly from the generated <code>FinalReport</code> JSON files and console transcripts.</div>
+
+<div class="kpis">
+  <div class="kpi blue">
+    <div class="value">100%</div>
+    <div class="label">Plan step completion rate (14/14 across 3 runs)</div>
+  </div>
+  <div class="kpi green">
+    <div class="value">93.3%</div>
+    <div class="label">Tool call success rate (14/15 calls)</div>
+  </div>
+  <div class="kpi teal">
+    <div class="value">100%</div>
+    <div class="label">Recovery success rate (1/1 induced failures recovered)</div>
+  </div>
+  <div class="kpi red">
+    <div class="value">19/19</div>
+    <div class="label">Automated tests passing</div>
+  </div>
+</div>
+
+<h2>Per-run results</h2>
+<table>
+  <tr>
+    <th>Run</th><th>Goal</th><th>Steps</th><th>Tool calls</th><th>Failed calls</th><th>Recovery</th><th>Status</th>
+  </tr>
+  <tr>
+    <td>01 — Research</td>
+    <td>Top 3 developments in AI coding assistants (last week)</td>
+    <td>4 / 4</td>
+    <td>4</td>
+    <td>0</td>
+    <td>—</td>
+    <td><span class="pill ok">COMPLETED</span></td>
+  </tr>
+  <tr>
+    <td>02 — Recovery demo</td>
+    <td>Cost calculation + verification (<code>--force-failure</code>)</td>
+    <td>3 / 3</td>
+    <td>4</td>
+    <td>1</td>
+    <td>1/1 recovered</td>
+    <td><span class="pill ok">COMPLETED</span></td>
+  </tr>
+  <tr>
+    <td>03 — Competitive brief</td>
+    <td>Notion vs. Obsidian comparison</td>
+    <td>7 / 7</td>
+    <td>7</td>
+    <td>0</td>
+    <td>—</td>
+    <td><span class="pill ok">COMPLETED</span></td>
+  </tr>
+</table>
+<div class="note">All 3 runs reached <code>COMPLETED</code> status with every planned step executed — the one induced failure (run 02) was fully absorbed by the validator → recovery → retry loop without operator intervention.</div>
+
+<h2>Tool usage &amp; reliability (aggregate across all 3 runs)</h2>
+<div class="bar-row">
+  <div class="bar-label">web_search</div>
+  <div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--purple)"></div></div>
+  <div class="bar-value">4 calls · 0 failed</div>
+</div>
+<div class="bar-row">
+  <div class="bar-label">page_fetcher</div>
+  <div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--purple)"></div></div>
+  <div class="bar-value">7 calls · 0 failed</div>
+</div>
+<div class="bar-row">
+  <div class="bar-label">calculator</div>
+  <div class="bar-track"><div class="bar-fill" style="width:75%;background:var(--red)"></div></div>
+  <div class="bar-value">4 calls · 1 failed</div>
+</div>
+<div class="note">The calculator's one failure was the deliberately injected failure in run 02 (<code>--force-failure</code>), not an organic error — it exists specifically to exercise the recovery path.</div>
+
+<h2>Test suite health</h2>
+<div class="bar-row">
+  <div class="bar-label">Unit tests</div>
+  <div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--blue)"></div></div>
+  <div class="bar-value">12/12 passed</div>
+</div>
+<div class="bar-row">
+  <div class="bar-label">Live integration tests</div>
+  <div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--teal)"></div></div>
+  <div class="bar-value">7/7 passed</div>
+</div>
+<div class="note">"Live integration" tests call the real Groq and Tavily APIs (no mocks), per the assignment's no-dataset constraint — see <code>docs/test_traces.csv</code> for the full labeled breakdown of all 19 pytest traces plus these 3 CLI runs.</div>
+
+<div class="footer">
+  Generated from <code>docs/samples/01_research_report.json</code>, <code>02_recovery_report.json</code>, <code>03_competitive_brief_report.json</code>, their matching transcripts, and a full <code>pytest -v</code> run. Regenerate by re-running the same 3 CLI goals and pytest — see README.md.
+</div>
+
+</body>
+</html>
